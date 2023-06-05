@@ -26,7 +26,7 @@ const Home = () => {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const res = await axios.get("http://localhost:3100/recipes");
+        const res = await axios.get("https://mern-recipe-app-api.onrender.com/recipes");
         setRecipes(res.data);
       } catch (err) {
         setError(true);
@@ -37,7 +37,7 @@ const Home = () => {
     const fetchSavedRecipe = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3100/recipes/savedRecipes/ids/${userID}`
+          `https://mern-recipe-app-api.onrender.com/recipes/savedRecipes/ids/${userID}`
         );
         setSavedRecipes(res.data.savedRecipes);
       } catch (err) {
@@ -54,7 +54,7 @@ const Home = () => {
   const savedRecipe = async (recipeID) => {
     try {
       const res = await axios.put(
-        "http://localhost:3100/recipes",
+        "https://mern-recipe-app-api.onrender.com/recipes",
         {
           recipeID,
           userID,

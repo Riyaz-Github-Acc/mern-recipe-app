@@ -24,7 +24,7 @@ const UserRecipes = () => {
     const fetchUserRecipes = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3100/recipes/user/${userID}/recipes`
+          `https://mern-recipe-app-api.onrender.com/recipes/user/${userID}/recipes`
         );
         setUserRecipes(res.data.userRecipes);
       } catch (err) {
@@ -39,7 +39,7 @@ const UserRecipes = () => {
     try {
       // Delete the recipe from the server
       const res = await axios.delete(
-        `http://localhost:3100/recipes/${recipeId}`,
+        `https://mern-recipe-app-api.onrender.com/recipes/${recipeId}`,
         { headers: { authorization: cookies.access_token } }
       );
 

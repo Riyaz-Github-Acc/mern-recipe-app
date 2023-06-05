@@ -36,7 +36,7 @@ const Login = () => {
       setNotificationError("Please Enter a Username and Password!!!");
     } else {
       try {
-        const res = await axios.post("http://localhost:3100/auth/login", {
+        const res = await axios.post("https://mern-recipe-app-api.onrender.com/auth/login", {
           username,
           password,
         });
@@ -83,7 +83,7 @@ const Register = () => {
       setNotificationError("Please Enter a Username and Password!!!");
     } else {
       try {
-        const res = await axios.post("http://localhost:3100/auth/register", {
+        const res = await axios.post("https://mern-recipe-app-api.onrender.com/auth/register", {
           username,
           password,
         });

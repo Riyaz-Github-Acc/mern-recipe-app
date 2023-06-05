@@ -21,7 +21,7 @@ const SavedRecipes = () => {
     const fetchSavedRecipe = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3100/recipes/savedRecipes/${userID}`
+          `https://mern-recipe-app-api.onrender.com/recipes/savedRecipes/${userID}`
         );
         setSavedRecipes(res.data.savedRecipes);
       } catch (err) {
@@ -35,7 +35,7 @@ const SavedRecipes = () => {
   const removeSavedRecipe = async (recipeId) => {
     try {
       const res = await axios.delete(
-        `http://localhost:3100/recipes/savedRecipes/${userID}/${recipeId}`,
+        `https://mern-recipe-app-api.onrender.com/recipes/savedRecipes/${userID}/${recipeId}`,
         { headers: { authorization: cookies.access_token } }
       );
       if (res.status === 200) {

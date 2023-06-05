@@ -65,7 +65,7 @@ const CreateRecipe = () => {
         imageUrl,
       };
 
-      await axios.post("http://localhost:3100/recipes", newRecipe, {
+      await axios.post("https://mern-recipe-app-api.onrender.com/recipes", newRecipe, {
         headers: { authorization: cookies.access_token },
       });
 
