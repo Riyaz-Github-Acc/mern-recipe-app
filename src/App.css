@@ -1,0 +1,178 @@
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Frank Ruhl Libre", serif;
+}
+
+:root {
+  --primary-color: #eeb72c;
+  --secondary-color: #fa645a;
+  --gray-color: #cfcfcf;
+  --black-color: #131313;
+  --white-color: #f8f6f3;
+  --disable-color: #ffa8a2;
+  --transition: 0.5s all ease;
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    width: 90%;
+  }
+}
+
+.link {
+  width: max-content;
+  text-decoration: none;
+}
+
+.btn {
+  background: var(--secondary-color);
+  border: none;
+  outline: none;
+  padding: 10px 25px;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--black-color);
+}
+
+.btn:disabled {
+  background: var(--disable-color);
+  cursor: not-allowed;
+}
+
+.btn .link {
+  color: var(--white-color);
+  font-size: clamp(1rem, 1vw, 1.2rem);
+}
+
+.btn:hover .link {
+  color: var(--white-color);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 350px;
+  background: var(--gray-color);
+  padding: 25px;
+}
+
+.form h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group input {
+  height: 40px;
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+}
+
+.form-group textarea {
+  height: 80px;
+  border: none;
+  outline: none;
+  padding: 10px;
+}
+
+.form-btn {
+  color: var(--white-color);
+  font-size: clamp(1rem, 1vw, 1.2rem);
+  margin-top: 10px;
+}
+
+.form-btn:hover {
+  color: var(--white-color);
+}
+
+.alert {
+  color: red;
+  text-align: center;
+}
+
+.success {
+  color: green;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+p {
+  text-align: justify;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 10px;
+  row-gap: 5px;
+  white-space: normal;
+}
+
+.recipe-card {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  align-items: center;
+  gap: 25px;
+  background: var(--gray-color);
+  margin-bottom: 35px;
+  border-radius: 15px;
+  padding: 25px 40px;
+  box-shadow: 0 5px 15px rgba(122, 122, 122, 0.2);
+  transition: var(--transition);
+}
+
+.recipe-card:hover {
+  box-shadow: 0 5px 15px rgba(122, 122, 122, 0.4);
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.right img {
+  width: 260px;
+  height: 200px;
+}
+
+@media (max-width: 500px) {
+  .auth-form {
+    width: 300px;
+    padding: 20px;
+  }
+}

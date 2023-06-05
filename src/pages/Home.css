@@ -1,0 +1,44 @@
+.home {
+    margin: 50px 0;
+}
+
+.home-btn {
+    padding: 10px 50px;
+}
+
+.saved {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.saved img {
+    width: 15px;
+    height: 15px;
+}
+
+.saved h4 {
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .recipe-card {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+    .home {
+        margin: 25px 0;
+    }
+
+    .home h1 {
+        margin-bottom: 15px;
+    }
+
+    .recipe-card {
+        padding: 25px;
+    }
+}
