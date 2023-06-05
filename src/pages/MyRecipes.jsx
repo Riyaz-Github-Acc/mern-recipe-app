@@ -1,14 +1,14 @@
 import axios from "axios";
-import { useCookies } from "react-cookie";
-import { useEffect, useState } from "react";
+import {useCookies} from "react-cookie";
+import {useEffect, useState} from "react";
 
-import { ref, deleteObject } from "firebase/storage";
-import { storage } from "../Firebase";
+import {ref, deleteObject} from "firebase/storage";
+import {storage} from "../Firebase";
 
-import { useGetUserID } from "../hooks/useGetUserID";
+import {useGetUserID} from "../hooks/useGetUserID";
 
 import "./MyRecipes.css";
-import { Notification } from "../components";
+import {Notification} from "../components";
 
 const UserRecipes = () => {
   const [userRecipes, setUserRecipes] = useState([]);
@@ -40,7 +40,7 @@ const UserRecipes = () => {
       // Delete the recipe from the server
       const res = await axios.delete(
         `https://mern-recipe-app-api.onrender.com/recipes/${recipeId}`,
-        { headers: { authorization: cookies.access_token } }
+        {headers: {authorization: cookies.access_token}}
       );
 
       if (res.status === 200) {
@@ -108,20 +108,14 @@ const UserRecipes = () => {
                   </span>
                 </h3>
               </div>
-              <div className="right">
-                <img src={recipe.imageUrl} alt={recipe.name} />
 
-                <div className="btns">
-                  <button className="btn form-btn home-btn">Edit</button>
-
-                  <button
-                    className="btn form-btn home-btn"
-                    onClick={() => deleteRecipe(recipe._id, recipe.imageUrl)}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
+              <img src={recipe.imageUrl} alt={recipe.name} />
+              <button
+                className="btn form-btn home-btn"
+                onClick={() => deleteRecipe(recipe._id, recipe.imageUrl)}
+              >
+                Delete
+              </button>
             </div>
           ))
         )}
