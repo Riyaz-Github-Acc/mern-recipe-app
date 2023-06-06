@@ -109,13 +109,15 @@ const UserRecipes = () => {
                 </h3>
               </div>
 
-              <img src={recipe.imageUrl} alt={recipe.name} />
-              <button
-                className="btn form-btn home-btn"
-                onClick={() => deleteRecipe(recipe._id, recipe.imageUrl)}
-              >
-                Delete
-              </button>
+              <div className="right">
+                <img src={recipe.imageUrl} alt={recipe.name} />
+                <button
+                  className="btn form-btn home-btn"
+                  onClick={() => deleteRecipe(recipe._id, recipe.imageUrl)}
+                >
+                  Delete
+                </button>
+              </div>
             </div>
           ))
         )}
