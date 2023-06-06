@@ -171,6 +171,10 @@ ul {
 }
 
 @media (max-width: 500px) {
+  h1 {
+    margin-bottom: 20px;
+  }
+
   .auth-form {
     width: 300px;
     padding: 20px;

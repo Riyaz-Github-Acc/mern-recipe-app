@@ -11,7 +11,7 @@
 
 .cre-rec-form.form {
   gap: 25px;
-  width: clamp(28rem, 50vw, 35rem);
+  width: clamp(22rem, 50vw, 35rem);
 }
 
 .ordinary-btn {
