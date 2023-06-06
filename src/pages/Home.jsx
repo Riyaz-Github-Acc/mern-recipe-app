@@ -6,6 +6,7 @@ import { useGetUserID } from "../hooks/useGetUserID";
 import tickImg from "../assets/home/tick.png";
 import { Notification } from "../components";
 import "./Home.css";
+import CircularProgress from "../components/loader/Loader";
 
 const Home = () => {
   const [recipes, setRecipes] = useState([]);
@@ -13,6 +14,7 @@ const Home = () => {
   const [cookies, setCookies] = useCookies(["access_token"]);
   const [notificationMap, setNotificationMap] = useState({});
 
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [notificationError, setNotificationError] = useState("");
 
@@ -25,24 +27,31 @@ const Home = () => {
 
   useEffect(() => {
     const fetchRecipe = async () => {
+      setIsLoading(true);
       try {
-        const res = await axios.get("https://mern-recipe-app-api.onrender.com/recipes");
+        const res = await axios.get(
+          "https://mern-recipe-app-api.onrender.com/recipes"
+        );
         setRecipes(res.data);
       } catch (err) {
         setError(true);
         setNotificationError("Something Went Wrong!!!");
       }
+      setIsLoading(false);
     };
 
     const fetchSavedRecipe = async () => {
+      setIsLoading(true);
       try {
         const res = await axios.get(
           `https://mern-recipe-app-api.onrender.com/recipes/savedRecipes/ids/${userID}`
         );
         setSavedRecipes(res.data.savedRecipes);
       } catch (err) {
-        console.log(err);
+        setError(true);
+        setNotificationError("Something Went Wrong!!!");
       }
+      setIsLoading(false);
     };
     fetchRecipe();
 
@@ -63,7 +72,8 @@ const Home = () => {
       );
       setSavedRecipes(res.data.savedRecipes);
     } catch (err) {
-      console.log(err);
+      setError(true);
+      setNotificationError("Something Went Wrong!!!");
     }
   };
 
@@ -71,7 +81,9 @@ const Home = () => {
     <div className="home">
       <div className="container">
         <h1>Recipes</h1>
-        {recipes.length === 0 ? (
+        {isLoading ? (
+          <CircularProgress />
+        ) : recipes.length === 0 ? (
           <Notification
             title="No Recipes Found!!!"
             subtitle="Please create some recipes to see here!"

@@ -1,18 +1,20 @@
 import axios from "axios";
-import {useCookies} from "react-cookie";
-import {useEffect, useState} from "react";
+import { useCookies } from "react-cookie";
+import { useEffect, useState } from "react";
 
-import {ref, deleteObject} from "firebase/storage";
-import {storage} from "../Firebase";
+import { ref, deleteObject } from "firebase/storage";
+import { storage } from "../Firebase";
 
-import {useGetUserID} from "../hooks/useGetUserID";
+import { useGetUserID } from "../hooks/useGetUserID";
 
 import "./MyRecipes.css";
-import {Notification} from "../components";
+import { Notification } from "../components";
 
 const UserRecipes = () => {
   const [userRecipes, setUserRecipes] = useState([]);
   const [cookies, setCookies] = useCookies(["access_token"]);
+
+  const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [notificationSuccess, setNotificationSuccess] = useState("");
   const [error, setError] = useState(false);
@@ -22,6 +24,7 @@ const UserRecipes = () => {
 
   useEffect(() => {
     const fetchUserRecipes = async () => {
+      setIsLoading(true);
       try {
         const res = await axios.get(
           `https://mern-recipe-app-api.onrender.com/recipes/user/${userID}/recipes`
@@ -31,6 +34,7 @@ const UserRecipes = () => {
         setError(true);
         setNotificationError("Something Went Wrong!!!");
       }
+      setIsLoading(false);
     };
     fetchUserRecipes();
   }, [userID]);
@@ -40,7 +44,7 @@ const UserRecipes = () => {
       // Delete the recipe from the server
       const res = await axios.delete(
         `https://mern-recipe-app-api.onrender.com/recipes/${recipeId}`,
-        {headers: {authorization: cookies.access_token}}
+        { headers: { authorization: cookies.access_token } }
       );
 
       if (res.status === 200) {
