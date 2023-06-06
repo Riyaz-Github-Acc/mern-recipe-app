@@ -2,4 +2,89 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 50vh;
+}
+
+.skeleton-loader .left {
+  display: flex;
+  flex-direction: column;
+  gap: 0 !important;
+}
+
+.skeleton-loader .right {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.rc-heading {
+  width: 55%;
+  height: 40px !important;
+}
+
+.rc-ing-container {
+  margin: 5px 0;
+}
+
+.rc-ingredient {
+  width: 95%;
+  height: 30px !important;
+}
+
+.display-line,
+.mobile-view {
+  display: none !important;
+}
+
+.rc-instruction {
+  width: 25%;
+  height: 35px !important;
+}
+
+.rc-instruction-text {
+  width: 100% !important;
+  height: 20px;
+}
+
+.rc-instruction-text.last-line {
+  width: 60% !important;
+}
+
+.rc-cooking-time {
+  width: 35%;
+  height: 35px !important;
+  margin-top: 5px !important;
+}
+
+@media (max-width: 1024px) {
+  .rc-heading {
+    width: 80%;
+  }
+
+  .display-line {
+    display: block !important;
+  }
+
+  .rc-ingredient:nth-child(3) {
+    width: 65%;
+  }
+
+  .rc-cooking-time {
+    width: 45%;
+  }
+}
+
+@media (max-width: 500px) {
+  .rc-instruction {
+    width: 35%;
+  }
+
+  .mobile-view {
+    display: block !important;
+  }
+
+  .rc-cooking-time {
+    width: 65%;
+  }
 }

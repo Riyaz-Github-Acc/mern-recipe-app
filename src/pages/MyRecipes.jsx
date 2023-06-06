@@ -9,6 +9,7 @@ import { useGetUserID } from "../hooks/useGetUserID";
 
 import "./MyRecipes.css";
 import { Notification } from "../components";
+import { Circle, SkeletonEffect } from "../components/loader/Loader";
 
 const UserRecipes = () => {
   const [userRecipes, setUserRecipes] = useState([]);
@@ -77,7 +78,14 @@ const UserRecipes = () => {
     <div className="user-recipes">
       <div className="container">
         <h1>My Recipes</h1>
-        {userRecipes.length === 0 ? (
+        {isLoading ? (
+          <>
+            <SkeletonEffect />
+            <SkeletonEffect />
+            <SkeletonEffect />
+            <SkeletonEffect />
+          </>
+        ) : userRecipes.length === 0 ? (
           <Notification
             title="No Recipes Found!!!"
             subtitle="Please create some recipes to see here!"

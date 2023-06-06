@@ -6,10 +6,13 @@ import { useGetUserID } from "../hooks/useGetUserID";
 
 import "./SavedRecipes.css";
 import { Notification } from "../components";
+import { Circle, SkeletonEffect } from "../components/loader/Loader";
 
 const SavedRecipes = () => {
   const [savedRecipes, setSavedRecipes] = useState([]);
   const [cookies, setCookies] = useCookies(["access_token"]);
+
+  const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [notificationSuccess, setNotificationSuccess] = useState("");
   const [error, setError] = useState(false);
@@ -19,6 +22,7 @@ const SavedRecipes = () => {
 
   useEffect(() => {
     const fetchSavedRecipe = async () => {
+      setIsLoading(true);
       try {
         const res = await axios.get(
           `https://mern-recipe-app-api.onrender.com/recipes/savedRecipes/${userID}`
@@ -28,6 +32,7 @@ const SavedRecipes = () => {
         setError(true);
         setNotificationError("Something Went Wrong!!!");
       }
+      setIsLoading(false);
     };
     fetchSavedRecipe();
   }, [userID]);
@@ -62,7 +67,14 @@ const SavedRecipes = () => {
     <div className="saved-recipes">
       <div className="container">
         <h1>Saved Recipes</h1>
-        {savedRecipes.length === 0 ? (
+        {isLoading ? (
+          <>
+            <SkeletonEffect />
+            <SkeletonEffect />
+            <SkeletonEffect />
+            <SkeletonEffect />
+          </>
+        ) : savedRecipes.length === 0 ? (
           <Notification
             title="No Recipes Found!!!"
             subtitle="Please save some recipes to see here!"
@@ -98,7 +110,8 @@ const SavedRecipes = () => {
                 </h3>
               </div>
               <div className="right">
-                <img src={recipe.imageUrl} alt={recipe.name} />
+                {<img src={recipe.imageUrl} alt={recipe.name} />}
+
                 <button
                   className="btn form-btn home-btn"
                   onClick={() => removeSavedRecipe(recipe._id)}

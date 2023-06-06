@@ -6,7 +6,7 @@ import { useGetUserID } from "../hooks/useGetUserID";
 import tickImg from "../assets/home/tick.png";
 import { Notification } from "../components";
 import "./Home.css";
-import CircularProgress from "../components/loader/Loader";
+import { Circle, SkeletonEffect } from "../components/loader/Loader";
 
 const Home = () => {
   const [recipes, setRecipes] = useState([]);
@@ -81,8 +81,16 @@ const Home = () => {
     <div className="home">
       <div className="container">
         <h1>Recipes</h1>
+
+        {error && <Notification title={notificationError}></Notification>}
+
         {isLoading ? (
-          <CircularProgress />
+          <>
+            <SkeletonEffect />
+            <SkeletonEffect />
+            <SkeletonEffect />
+            <SkeletonEffect />
+          </>
         ) : recipes.length === 0 ? (
           <Notification
             title="No Recipes Found!!!"
@@ -157,8 +165,6 @@ const Home = () => {
             </div>
           ))
         )}
-
-        {error && <Notification title={notificationError}></Notification>}
       </div>
     </div>
   );

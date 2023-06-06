@@ -1,89 +1,89 @@
 .navbar {
-    background: var(--primary-color);
-    z-index: 2;
+  background: var(--primary-color);
+  z-index: 2;
 }
 
 .navbar-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .logo img {
-    width: 40px;
-    height: 40px;
+  width: 40px;
+  height: 40px;
 }
 
 .logo span {
-    font-size: clamp(1rem, 1.5vw, 1.25rem);
-    color: var(--black-color);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  color: var(--black-color);
 }
 
 .nav-links {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .menu {
-    display: none;
-    width: 35px;
-    height: 35px;
+  display: none;
+  width: 35px;
+  height: 35px;
 }
 
 .menu img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    cursor: pointer;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
 }
 
 nav {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    font-size: clamp(1rem, 1.2vw, 1.2rem);
-    z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  z-index: 1;
 }
 
 .nav-link {
-    color: var(--black-color);
-    transition: var(--transition);
-    cursor: pointer;
+  color: var(--black-color);
+  transition: var(--transition);
+  cursor: pointer;
 }
 
 .nav-link:hover {
-    color: var(--secondary-color);
+  color: var(--secondary-color);
 }
 
 .nav-btn {
-    font-size: clamp(1rem, 1vw, 1.2rem) !important;
-    color: var(--white-color) !important;
+  font-size: clamp(1rem, 1vw, 1.2rem) !important;
+  color: var(--white-color) !important;
 }
 
-@media (max-width: 500px) {
-    .menu {
-        display: block;
-    }
+@media (max-width: 768px) {
+  .menu {
+    display: block;
+  }
 
-    nav {
-        position: absolute;
-        top: 75px;
-        right: 0;
-        flex-direction: column;
-        width: 100%;
-        background: var(--primary-color);
-        padding: 15px 25px;
-    }
+  nav {
+    position: absolute;
+    top: 75px;
+    right: 0;
+    flex-direction: column;
+    width: 100%;
+    background: var(--primary-color);
+    padding: 15px 25px;
+  }
 
-    nav.hide {
-        display: none;
-    }
+  nav.hide {
+    display: none;
+  }
 }
