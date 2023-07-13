@@ -36,10 +36,13 @@ const Login = () => {
       setNotificationError("Please Enter a Username and Password!!!");
     } else {
       try {
-        const res = await axios.post("https://mern-recipe-app-api.onrender.com/auth/login", {
-          username,
-          password,
-        });
+        const res = await axios.post(
+          "https://mern-recipe-app-api.onrender.com/auth/login",
+          {
+            username,
+            password,
+          }
+        );
 
         setCookies("access_token", res.data.token);
         window.localStorage.setItem("userID", res.data.userID);
@@ -83,10 +86,13 @@ const Register = () => {
       setNotificationError("Please Enter a Username and Password!!!");
     } else {
       try {
-        const res = await axios.post("https://mern-recipe-app-api.onrender.com/auth/register", {
-          username,
-          password,
-        });
+        const res = await axios.post(
+          "https://mern-recipe-app-api.onrender.com/auth/register",
+          {
+            username,
+            password,
+          }
+        );
 
         if (res.status === 409) {
           setError(true);

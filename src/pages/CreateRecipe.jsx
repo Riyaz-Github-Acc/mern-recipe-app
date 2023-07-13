@@ -7,7 +7,6 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 import { storage } from "../Firebase";
 import { useGetUserID } from "../hooks/useGetUserID";
-
 import ImgPlaceholder from "../assets/create-recipe/img-placeholder.png";
 
 import "./CreateRecipe.css";
